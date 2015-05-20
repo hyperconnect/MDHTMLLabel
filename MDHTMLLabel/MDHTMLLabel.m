@@ -1799,7 +1799,7 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
     UITouch *touch = [touches anyObject];
 
     self.activeLink = [self linkAtPoint:[touch locationInView:self]];
-
+    NSLog(@"activeLink: %@", self.activeLink);
     if (self.activeLink)
     {
         self.holdGestureTimer = [NSTimer scheduledTimerWithTimeInterval:self.minimumPressDuration
@@ -1862,7 +1862,8 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
 {
     if (self.activeLink)
     {
-        self.activeLink = nil;
+        [self touchesEnded: touches withEvent:event];
+        //self.activeLink = nil;
     }
     else
     {
